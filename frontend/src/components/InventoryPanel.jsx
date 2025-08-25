@@ -112,26 +112,54 @@ const InventoryPanel = () => {
         
         if (item && !renderedItems.has(item.id)) {
           renderedItems.add(item.id);
+          const bounds = getShapeBounds(item.shape);
+          
           cells.push(
             <div
               key={`item-${item.id}`}
               className="absolute cursor-pointer hover:brightness-110 transition-all"
               style={{
-                left: col * GRID_SIZE,
-                top: row * GRID_SIZE,
-                width: item.width * GRID_SIZE,
-                height: item.height * GRID_SIZE,
+                left: item.col * GRID_SIZE,
+                top: item.row * GRID_SIZE,
+                width: bounds.width * GRID_SIZE,
+                height: bounds.height * GRID_SIZE,
                 zIndex: 10
               }}
               onClick={() => removeItem(item)}
             >
               <div 
-                className={`w-full h-full rounded border-2 border-yellow-400 shadow-lg ${item.color} flex items-center justify-center text-white font-bold text-sm overflow-hidden`}
+                className={`relative w-full h-full rounded border-2 border-yellow-400 shadow-lg ${item.color} text-white font-bold text-sm overflow-hidden`}
                 style={{
                   backgroundImage: item.pattern ? 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)' : 'none'
                 }}
               >
-                <span className="drop-shadow-md">{item.name}</span>
+                {/* Renderizar cada celda de la forma */}
+                {item.shape.map(([x, y], index) => (
+                  <div
+                    key={index}
+                    className="absolute border border-yellow-300"
+                    style={{
+                      left: x * GRID_SIZE,
+                      top: y * GRID_SIZE,
+                      width: GRID_SIZE,
+                      height: GRID_SIZE,
+                      backgroundColor: 'currentColor',
+                      opacity: 0.9
+                    }}
+                  />
+                ))}
+                
+                {/* Nombre del item centrado */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span className="drop-shadow-md text-center">{item.name}</span>
+                </div>
+
+                {/* Indicador de que se puede rotar */}
+                {item.rotatable && (
+                  <div className="absolute top-1 right-1 w-4 h-4 bg-green-500 rounded-full text-xs flex items-center justify-center">
+                    ↻
+                  </div>
+                )}
               </div>
             </div>
           );
