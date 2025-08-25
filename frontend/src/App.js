@@ -13,7 +13,7 @@ const Home = () => {
             PUZZLE INVENTORY
           </h1>
           <p className="text-gray-400 mt-1 text-sm lg:text-base px-4">
-            Organiza los objetos en el grid - ¡Optimizado para móvil!
+            Arrastra objetos al grid • Doble-clic para rotar ↻
           </p>
         </header>
         <main>
