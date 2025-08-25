@@ -1,113 +1,125 @@
-// Mock data para items del inventario tipo Resident Evil - Versión móvil
+// Mock data para items del inventario con formas complejas y rotación
 export const mockItems = [
-  // Items básicos para móvil - Tamaños optimizados
+  // Items rectangulares básicos (no se pueden rotar)
   {
     id: 1,
     name: 'Pistol',
-    width: 2,
-    height: 1,
+    shape: [[0,0], [1,0]], // 2x1 horizontal
+    rotatable: true,
     color: 'bg-gradient-to-br from-gray-600 to-gray-800',
     category: 'weapon',
-    pattern: false
+    pattern: false,
+    rotation: 0
   },
   {
     id: 2,
     name: 'Ammo',
-    width: 1,
-    height: 1,
+    shape: [[0,0]], // 1x1
+    rotatable: false,
     color: 'bg-gradient-to-br from-yellow-600 to-orange-700',
     category: 'ammo',
-    pattern: false
+    pattern: false,
+    rotation: 0
   },
   {
     id: 3,
     name: 'Herb',
-    width: 1,
-    height: 1,
+    shape: [[0,0]], // 1x1
+    rotatable: false,
     color: 'bg-gradient-to-br from-green-500 to-green-700',
     category: 'health',
-    pattern: false
+    pattern: false,
+    rotation: 0
   },
   {
     id: 4,
     name: 'Key',
-    width: 1,
-    height: 1,
+    shape: [[0,0]], // 1x1
+    rotatable: false,
     color: 'bg-gradient-to-br from-blue-500 to-blue-700',
     category: 'key',
-    pattern: true
+    pattern: true,
+    rotation: 0
   },
   {
     id: 5,
-    name: 'Knife',
-    width: 1,
-    height: 2,
-    color: 'bg-gradient-to-br from-gray-600 to-gray-800',
+    name: 'L-Gun',
+    shape: [[0,0], [0,1], [0,2], [1,2]], // Forma L
+    rotatable: true,
+    color: 'bg-gradient-to-br from-purple-600 to-purple-800',
     category: 'weapon',
-    pattern: false
+    pattern: false,
+    rotation: 0
   },
   {
     id: 6,
     name: 'Aid Kit',
-    width: 2,
-    height: 1,
+    shape: [[0,0], [1,0]], // 2x1
+    rotatable: true,
     color: 'bg-gradient-to-br from-red-500 to-red-700',
     category: 'health',
-    pattern: true
+    pattern: true,
+    rotation: 0
   },
   {
     id: 7,
-    name: 'Gem',
-    width: 1,
-    height: 1,
+    name: 'T-Item',
+    shape: [[0,0], [1,0], [2,0], [1,1]], // Forma T
+    rotatable: true,
     color: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
-    category: 'treasure',
-    pattern: true
+    category: 'special',
+    pattern: true,
+    rotation: 0
   },
   {
     id: 8,
     name: 'Rifle',
-    width: 3,
-    height: 1,
+    shape: [[0,0], [1,0], [2,0]], // 3x1
+    rotatable: true,
     color: 'bg-gradient-to-br from-gray-700 to-black',
     category: 'weapon',
-    pattern: true
+    pattern: true,
+    rotation: 0
   },
   {
     id: 9,
-    name: 'Bomb',
-    width: 1,
-    height: 1,
+    name: 'Z-Part',
+    shape: [[0,0], [1,0], [1,1], [2,1]], // Forma Z
+    rotatable: true,
     color: 'bg-gradient-to-br from-orange-600 to-red-700',
-    category: 'explosive',
-    pattern: false
+    category: 'part',
+    pattern: false,
+    rotation: 0
   },
   {
     id: 10,
     name: 'Shells',
-    width: 1,
-    height: 2,
+    shape: [[0,0], [0,1]], // 1x2 vertical
+    rotatable: true,
     color: 'bg-gradient-to-br from-red-600 to-red-800',
     category: 'ammo',
-    pattern: false
+    pattern: false,
+    rotation: 0
   },
   {
     id: 11,
-    name: 'Scope',
-    width: 2,
-    height: 2,
+    name: 'Block',
+    shape: [[0,0], [0,1], [1,0], [1,1]], // 2x2
+    rotatable: false,
     color: 'bg-gradient-to-br from-indigo-600 to-indigo-800',
-    category: 'attachment',
-    pattern: true
+    category: 'block',
+    pattern: true,
+    rotation: 0
   },
   {
     id: 12,
     name: 'Case',
-    width: 3,
-    height: 2,
+    shape: [[0,0], [1,0], [2,0], [0,1], [1,1], [2,1]], // 3x2
+    rotatable: true,
     color: 'bg-gradient-to-br from-amber-800 to-amber-900',
     category: 'container',
-    pattern: true
+    pattern: true,
+    rotation: 0
   }
 ];
 
