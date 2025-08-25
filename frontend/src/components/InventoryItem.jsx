@@ -1,6 +1,4 @@
 import React from 'react';
-
-import React from 'react';
 import { getShapeBounds } from '../utils/itemUtils';
 
 const InventoryItem = ({ item, onDragStart, onItemRotate, isDragging, isMobile = false }) => {
