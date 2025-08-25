@@ -230,6 +230,7 @@ const InventoryPanel = () => {
                 key={item.id}
                 item={item}
                 onDragStart={handleDragStart}
+                onItemRotate={handleItemRotate}
                 isDragging={draggedItem?.id === item.id}
                 isMobile={true}
               />
