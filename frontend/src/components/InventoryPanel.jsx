@@ -11,9 +11,9 @@ const InventoryPanel = () => {
   const [dragPreview, setDragPreview] = useState({ x: 0, y: 0, visible: false });
   const gridRef = useRef(null);
 
-  const GRID_SIZE = 32;
-  const GRID_COLS = 20;
-  const GRID_ROWS = 15;
+  const GRID_SIZE = 40;
+  const GRID_COLS = 8;
+  const GRID_ROWS = 10;
 
   const getGridPosition = (x, y) => {
     const rect = gridRef.current?.getBoundingClientRect();
