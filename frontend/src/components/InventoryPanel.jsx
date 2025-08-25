@@ -255,12 +255,29 @@ const InventoryPanel = () => {
           style={{
             left: dragPreview.x,
             top: dragPreview.y,
-            width: draggedItem.width * 24,
-            height: draggedItem.height * 24
+            width: getShapeBounds(draggedItem.shape).width * 24,
+            height: getShapeBounds(draggedItem.shape).height * 24
           }}
         >
-          <div className={`w-full h-full rounded border-2 border-yellow-400 ${draggedItem.color} flex items-center justify-center text-white font-bold text-xs`}>
-            {draggedItem.name}
+          <div className={`relative w-full h-full rounded border-2 border-yellow-400 ${draggedItem.color} text-white font-bold text-xs`}>
+            {/* Renderizar forma en la vista previa */}
+            {draggedItem.shape.map(([x, y], index) => (
+              <div
+                key={index}
+                className="absolute border border-yellow-300"
+                style={{
+                  left: x * 24,
+                  top: y * 24,
+                  width: 24,
+                  height: 24,
+                  backgroundColor: 'currentColor',
+                  opacity: 0.8
+                }}
+              />
+            ))}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-center">{draggedItem.name}</span>
+            </div>
           </div>
         </div>
       )}
