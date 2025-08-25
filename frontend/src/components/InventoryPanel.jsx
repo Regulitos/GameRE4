@@ -71,6 +71,13 @@ const InventoryPanel = () => {
     setDraggedItem(item);
   };
 
+  const handleItemRotate = (item) => {
+    const rotatedItem = rotateItem(item);
+    setAvailableItems(prev => 
+      prev.map(i => i.id === item.id ? rotatedItem : i)
+    );
+  };
+
   const handleDragMove = useCallback((e) => {
     if (!draggedItem) return;
     
