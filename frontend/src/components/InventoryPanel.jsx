@@ -3,6 +3,7 @@ import { Card } from './ui/card';
 import { mockItems } from '../data/mock';
 import InventoryItem from './InventoryItem';
 import GridSlot from './GridSlot';
+import { rotateItem, canPlaceShape, getShapeCells, getShapeBounds } from '../utils/itemUtils';
 
 const InventoryPanel = () => {
   const [gridItems, setGridItems] = useState({});
