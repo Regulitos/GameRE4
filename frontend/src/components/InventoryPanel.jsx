@@ -7,15 +7,17 @@ import GridSlot from './GridSlot';
 import { rotateItem, canPlaceShape, getShapeCells, getShapeBounds } from '../utils/itemUtils';
 
 const InventoryPanel = () => {
+  const [currentLevel, setCurrentLevel] = useState('easy');
   const [gridItems, setGridItems] = useState({});
-  const [availableItems, setAvailableItems] = useState(mockItems);
+  const [availableItems, setAvailableItems] = useState(getItemsForLevel('easy'));
   const [draggedItem, setDraggedItem] = useState(null);
   const [dragPreview, setDragPreview] = useState({ x: 0, y: 0, visible: false });
   const gridRef = useRef(null);
 
   const GRID_SIZE = 40;
-  const GRID_COLS = 8;
-  const GRID_ROWS = 10;
+  const currentConfig = levelConfigs[currentLevel];
+  const GRID_COLS = currentConfig.gridCols;
+  const GRID_ROWS = currentConfig.gridRows;
 
   const getGridPosition = (x, y) => {
     const rect = gridRef.current?.getBoundingClientRect();
