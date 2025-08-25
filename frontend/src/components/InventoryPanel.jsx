@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Card } from './ui/card';
-import { mockItems } from '../data/mock';
+import { Button } from './ui/button';
+import { levelConfigs, getItemsForLevel } from '../data/mock';
 import InventoryItem from './InventoryItem';
 import GridSlot from './GridSlot';
 import { rotateItem, canPlaceShape, getShapeCells, getShapeBounds } from '../utils/itemUtils';
