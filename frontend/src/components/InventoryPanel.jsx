@@ -165,56 +165,65 @@ const InventoryPanel = () => {
 
   return (
     <div 
-      className="flex gap-6 p-6 bg-gray-900 min-h-screen"
+      className="flex flex-col lg:flex-row gap-4 p-4 bg-gray-900 min-h-screen"
       onMouseMove={handleDragMove}
       onMouseUp={handleDrop}
+      onTouchMove={handleDragMove}
+      onTouchEnd={handleDrop}
       style={{ userSelect: 'none' }}
     >
-      {/* Panel de inventario */}
-      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl">
-        <div className="p-4">
-          <h2 className="text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-600 pb-2">
+      {/* Panel de inventario - Diseño móvil primero */}
+      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl flex-1 max-w-md mx-auto lg:max-w-none">
+        <div className="p-3">
+          <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2">
             INVENTORY GRID
           </h2>
           <div 
             ref={gridRef}
-            className="relative bg-gray-700 border-2 border-gray-600 rounded"
+            className="relative bg-gray-700 border-2 border-gray-600 rounded mx-auto"
             style={{
               width: GRID_COLS * GRID_SIZE,
               height: GRID_ROWS * GRID_SIZE
             }}
             onMouseUp={handleDrop}
+            onTouchEnd={handleDrop}
           >
             {renderGrid()}
           </div>
-          <div className="mt-4 text-center">
-            <p className="text-gray-400 text-sm">
-              Items en grid: {Object.keys(gridItems).length > 0 ? 
-                [...new Set(Object.values(gridItems).map(i => i?.id))].length : 0}
+          <div className="mt-3 text-center">
+            <p className="text-gray-400 text-xs lg:text-sm">
+              Items: {Object.keys(gridItems).length > 0 ? 
+                [...new Set(Object.values(gridItems).map(i => i?.id))].length : 0}/{Math.floor((GRID_COLS * GRID_ROWS) / 2)}
             </p>
           </div>
         </div>
       </Card>
 
-      {/* Panel de items disponibles */}
-      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl w-80">
-        <div className="p-4">
-          <h2 className="text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-600 pb-2">
-            AVAILABLE ITEMS
+      {/* Panel de items disponibles - Compacto para móvil */}
+      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl lg:w-80 max-w-md mx-auto lg:max-w-none">
+        <div className="p-3">
+          <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2">
+            ITEMS
           </h2>
-          <div className="grid grid-cols-4 gap-3 max-h-[500px] overflow-y-auto">
-            {availableItems.map(item => (
+          <div className="grid grid-cols-6 lg:grid-cols-4 gap-2 max-h-[300px] lg:max-h-[500px] overflow-y-auto">
+            {availableItems.slice(0, 12).map(item => (
               <InventoryItem
                 key={item.id}
                 item={item}
                 onDragStart={handleDragStart}
                 isDragging={draggedItem?.id === item.id}
+                isMobile={true}
               />
             ))}
           </div>
           {availableItems.length === 0 && (
-            <p className="text-gray-500 text-center text-sm mt-8">
-              No hay items disponibles
+            <p className="text-gray-500 text-center text-xs lg:text-sm mt-4">
+              No hay items
+            </p>
+          )}
+          {availableItems.length > 12 && (
+            <p className="text-yellow-400 text-center text-xs mt-2">
+              +{availableItems.length - 12} items más
             </p>
           )}
         </div>
