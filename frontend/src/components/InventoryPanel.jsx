@@ -30,37 +30,20 @@ const InventoryPanel = () => {
   };
 
   const canPlaceItem = (item, col, row) => {
-    // Verificar que el item quepa dentro del grid
-    if (col + item.width > GRID_COLS || row + item.height > GRID_ROWS) {
-      return false;
-    }
-
-    // Verificar colisiones con otros items
-    for (let r = row; r < row + item.height; r++) {
-      for (let c = col; c < col + item.width; c++) {
-        const key = `${r}-${c}`;
-        if (gridItems[key]) {
-          return false;
-        }
-      }
-    }
-
-    return true;
+    return canPlaceShape(item.shape, col, row, gridItems, GRID_COLS, GRID_ROWS);
   };
 
   const placeItem = (item, col, row) => {
     if (!canPlaceItem(item, col, row)) return false;
 
     const newGridItems = { ...gridItems };
-    const placedItem = { ...item, col, row, id: Date.now() };
+    const placedItem = { ...item, col, row, id: Date.now(), originalId: item.id };
 
-    // Marcar todas las celdas ocupadas por el item
-    for (let r = row; r < row + item.height; r++) {
-      for (let c = col; c < col + item.width; c++) {
-        const key = `${r}-${c}`;
-        newGridItems[key] = placedItem;
-      }
-    }
+    // Marcar todas las celdas ocupadas por la forma del item
+    const cells = getShapeCells(item.shape, col, row);
+    cells.forEach(cell => {
+      newGridItems[cell.key] = placedItem;
+    });
 
     setGridItems(newGridItems);
     setAvailableItems(prev => prev.filter(i => i.id !== item.id));
