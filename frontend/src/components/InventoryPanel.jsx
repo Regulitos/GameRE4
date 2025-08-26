@@ -297,32 +297,31 @@ const InventoryPanel = () => {
       {/* Panel de inventario - Diseño móvil primero */}
       <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl flex-1 max-w-md mx-auto lg:max-w-none">
         <div className="p-3">
-          {/* Selector de nivel */}
-          <div className="mb-3">
-            <div className="flex gap-1 justify-center mb-2">
-              {Object.entries(levelConfigs).map(([level, config]) => (
-                <Button
-                  key={level}
-                  variant={currentLevel === level ? "default" : "outline"}
-                  size="sm"
-                  className={`text-xs px-2 py-1 ${
-                    currentLevel === level 
-                      ? 'bg-yellow-600 text-black border-yellow-400' 
-                      : 'bg-gray-700 text-yellow-400 border-yellow-600 hover:bg-yellow-600 hover:text-black'
-                  }`}
-                  onClick={() => handleLevelChange(level)}
-                >
-                  {config.title}
-                </Button>
-              ))}
+          {/* Información del nivel actual */}
+          <div className="mb-3 text-center">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-yellow-400 font-bold">
+                Nivel {currentLevelData.id}
+              </span>
+              <span className="text-yellow-300 text-xs">
+                ⭐ {playerProgress.stars}
+              </span>
             </div>
-            <p className="text-yellow-300 text-center text-xs">
-              {currentConfig.description}
+            <h3 className="text-yellow-300 font-semibold text-sm mb-1">
+              {currentLevelData.title}
+            </h3>
+            <p className="text-gray-400 text-xs mb-2">
+              {currentLevelData.description}
             </p>
+            <div className="bg-gray-700 rounded px-2 py-1">
+              <p className="text-yellow-200 text-xs font-medium">
+                🎯 {currentLevelData.objective}
+              </p>
+            </div>
           </div>
 
           <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2">
-            INVENTORY GRID
+            GRID DE MISIÓN
           </h2>
           <div 
             ref={gridRef}
