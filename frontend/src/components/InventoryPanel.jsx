@@ -28,43 +28,47 @@ const InventoryPanel = () => {
   }, [currentLevelData.id]);
 
   const initializeLevel = () => {
-    const levelData = prepareGameLevel(getCurrentLevel());
-    setCurrentLevelData(levelData);
-    setAvailableItems([...levelData.availableItems]);
+    // Usar el nivel actual ya establecido
+    setAvailableItems([...currentLevelData.availableItems]);
     
     // Inicializar grid con obstáculos fijos
     const initialGrid = {};
-    levelData.obstaclesFixed.forEach(obstacle => {
-      if (obstacle.type === 'block') {
-        // Obstáculos simples
-        const key = `${obstacle.row}-${obstacle.col}`;
-        initialGrid[key] = {
-          id: `obstacle-${obstacle.row}-${obstacle.col}`,
-          name: obstacle.name,
-          isObstacle: true,
-          col: obstacle.col,
-          row: obstacle.row,
-          shape: [[0,0]],
-          color: 'bg-gradient-to-br from-red-800 to-red-900',
-          removable: false
-        };
-      } else if (obstacle.type === 'fixed' && obstacle.shape) {
-        // Items fijos con formas
-        const cells = getShapeCells(obstacle.shape, obstacle.col, obstacle.row);
-        cells.forEach(cell => {
-          initialGrid[cell.key] = {
-            id: `fixed-${obstacle.row}-${obstacle.col}`,
+    if (currentLevelData.obstaclesFixed) {
+      currentLevelData.obstaclesFixed.forEach(obstacle => {
+        if (obstacle.type === 'block') {
+          // Obstáculos simples
+          const key = `${obstacle.row}-${obstacle.col}`;
+          initialGrid[key] = {
+            id: `obstacle-${obstacle.row}-${obstacle.col}`,
             name: obstacle.name,
-            isFixed: true,
+            isObstacle: true,
             col: obstacle.col,
             row: obstacle.row,
-            shape: obstacle.shape,
-            color: 'bg-gradient-to-br from-blue-700 to-blue-800',
+            shape: [[0,0]],
+            color: 'bg-gradient-to-br from-red-800 to-red-900',
             removable: false
           };
-        });
-      }
-    });
+        } else if (obstacle.type === 'fixed' && obstacle.shape) {
+          // Items fijos con formas
+          const cells = getShapeCells(obstacle.shape, obstacle.col, obstacle.row);
+          cells.forEach(cell => {
+            initialGrid[cell.key] = {
+              id: `fixed-${obstacle.row}-${obstacle.col}`,
+              name: obstacle.name,
+              isFixed: true,
+              col: obstacle.col,
+              row: obstacle.row,
+              shape: obstacle.shape,
+              color: 'bg-gradient-to-br from-blue-700 to-blue-800',
+              removable: false
+            };
+          });
+        }
+      });
+    }
+    
+    console.log('Initializing level with obstacles:', currentLevelData.obstaclesFixed);
+    console.log('Initial grid:', initialGrid);
     
     setGridItems(initialGrid);
   };
