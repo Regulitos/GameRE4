@@ -1,34 +1,156 @@
-// Configuraciones de niveles
-export const levelConfigs = {
-  easy: {
+// Sistema de niveles progresivos tipo Candy Crush
+export const gamelevels = [
+  // Nivel 1 - Tutorial básico
+  {
+    id: 1,
+    title: "Primer Día",
+    description: "Aprende lo básico del inventario",
     gridCols: 6,
     gridRows: 6,
-    maxItems: 6,
-    title: "Principiante",
-    description: "Grid 6x6 - ¡Aprende lo básico!"
+    objective: "Coloca todos los items en el grid",
+    obstaclesFixed: [
+      // Algunos obstáculos en el centro
+      { row: 2, col: 2, type: 'block', name: 'Muro' },
+      { row: 3, col: 3, type: 'block', name: 'Muro' }
+    ],
+    availableItems: [
+      { id: 101, name: 'Knife', shape: [[0,0]], rotatable: false },
+      { id: 102, name: 'Herb', shape: [[0,0]], rotatable: false },
+      { id: 103, name: 'Key', shape: [[0,0]], rotatable: false }
+    ],
+    stars: 1
   },
-  normal: {
+
+  // Nivel 2 - Introducir formas rectangulares
+  {
+    id: 2,
+    title: "Día de Entrenamiento",
+    description: "Items más grandes",
+    gridCols: 6,
+    gridRows: 6,
+    objective: "Organiza el equipo básico",
+    obstaclesFixed: [
+      { row: 0, col: 2, type: 'block', name: 'Caja' },
+      { row: 1, col: 2, type: 'block', name: 'Caja' },
+      { row: 4, col: 4, type: 'block', name: 'Muro' }
+    ],
+    availableItems: [
+      { id: 201, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true },
+      { id: 202, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true },
+      { id: 203, name: 'Ammo', shape: [[0,0]], rotatable: false }
+    ],
+    stars: 1
+  },
+
+  // Nivel 3 - Formas L
+  {
+    id: 3,
+    title: "Primer Encuentro",
+    description: "Aparecen formas complejas",
+    gridCols: 7,
+    gridRows: 6,
+    objective: "Acomoda el equipo en L",
+    obstaclesFixed: [
+      { row: 0, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] },
+      { row: 5, col: 4, type: 'block', name: 'Debris' },
+      { row: 5, col: 5, type: 'block', name: 'Debris' }
+    ],
+    availableItems: [
+      { id: 301, name: 'L-Gun', shape: [[0,0], [0,1], [1,1]], rotatable: true },
+      { id: 302, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true },
+      { id: 303, name: 'Card', shape: [[0,0]], rotatable: false }
+    ],
+    stars: 1
+  },
+
+  // Nivel 4 - Más obstáculos
+  {
+    id: 4,
+    title: "Laboratorio",
+    description: "El espacio se reduce",
+    gridCols: 8,
+    gridRows: 6,
+    objective: "Laboratorio lleno de obstáculos",
+    obstaclesFixed: [
+      // Crear un pasillo con obstáculos
+      { row: 1, col: 1, type: 'block', name: 'Mesa' },
+      { row: 1, col: 2, type: 'block', name: 'Mesa' },
+      { row: 3, col: 4, type: 'block', name: 'Equipment' },
+      { row: 3, col: 5, type: 'block', name: 'Equipment' },
+      { row: 2, col: 6, type: 'fixed', name: 'T-Virus', shape: [[0,0]] }
+    ],
+    availableItems: [
+      { id: 401, name: 'Knife', shape: [[0,0], [0,1]], rotatable: true },
+      { id: 402, name: 'Syringe', shape: [[0,0], [1,0], [1,1]], rotatable: true },
+      { id: 403, name: 'Sample', shape: [[0,0]], rotatable: false },
+      { id: 404, name: 'Data', shape: [[0,0], [1,0]], rotatable: true }
+    ],
+    stars: 1
+  },
+
+  // Nivel 5 - Formas T y Z
+  {
+    id: 5,
+    title: "Crisis",
+    description: "Formas complejas bajo presión",
     gridCols: 8,
     gridRows: 8,
-    maxItems: 8,
-    title: "Normal", 
-    description: "Grid 8x8 - Desafío balanceado"
+    objective: "Sobrevive con formas complejas",
+    obstaclesFixed: [
+      // Crear un patrón más complejo
+      { row: 2, col: 2, type: 'block', name: 'Wall' },
+      { row: 2, col: 3, type: 'block', name: 'Wall' },
+      { row: 2, col: 4, type: 'block', name: 'Wall' },
+      { row: 5, col: 1, type: 'fixed', name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]] },
+      { row: 6, col: 6, type: 'block', name: 'Rubble' }
+    ],
+    availableItems: [
+      { id: 501, name: 'T-Piece', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true },
+      { id: 502, name: 'Z-Part', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true },
+      { id: 503, name: 'Key', shape: [[0,0]], rotatable: false }
+    ],
+    stars: 1
   },
-  hard: {
-    gridCols: 8,
-    gridRows: 10,
-    maxItems: 12,
-    title: "Difícil",
-    description: "Grid 8x10 - ¡Máximo desafío!"
-  },
-  expert: {
-    gridCols: 12,
-    gridRows: 15,
-    maxItems: 18,
-    title: "Experto",
-    description: "Grid 12x15 - ¡Solo para maestros!"
+
+  // Nivel 6 - Desafío mayor
+  {
+    id: 6,
+    title: "Escape Final",
+    description: "El inventario más complejo",
+    gridCols: 10,
+    gridRows: 8,
+    objective: "Organiza todo para escapar",
+    obstaclesFixed: [
+      // Patrón complejo de obstáculos
+      { row: 0, col: 4, type: 'block', name: 'Exit Door' },
+      { row: 1, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] },
+      { row: 3, col: 3, type: 'block', name: 'Pillar' },
+      { row: 3, col: 4, type: 'block', name: 'Pillar' },
+      { row: 4, col: 3, type: 'block', name: 'Pillar' },
+      { row: 4, col: 4, type: 'block', name: 'Pillar' },
+      { row: 7, col: 8, type: 'fixed', name: 'Aid', shape: [[0,0], [1,0]] }
+    ],
+    availableItems: [
+      { id: 601, name: 'Shotgun', shape: [[0,0], [1,0], [2,0]], rotatable: true },
+      { id: 602, name: 'L-Scope', shape: [[0,0], [0,1], [1,1]], rotatable: true },
+      { id: 603, name: 'Z-Key', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true },
+      { id: 604, name: 'Med Kit', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true },
+      { id: 605, name: 'Battery', shape: [[0,0]], rotatable: false }
+    ],
+    stars: 1
   }
-};
+];
+
+// Items básicos para uso general
+export const baseItems = [
+  {
+    name: 'Block',
+    shape: [[0,0]],
+    color: 'bg-gradient-to-br from-gray-800 to-black',
+    image: null,
+    category: 'obstacle'
+  }
+];
 
 // Items con imágenes de Resident Evil
 export const allItems = [
