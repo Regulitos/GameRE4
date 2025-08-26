@@ -119,6 +119,11 @@ const InventoryPanel = () => {
   };
 
   const removeItem = (itemToRemove) => {
+    // No se pueden remover obstáculos o items fijos
+    if (itemToRemove.isObstacle || itemToRemove.isFixed || !itemToRemove.removable !== false) {
+      return;
+    }
+
     const newGridItems = { ...gridItems };
     
     // Remover el item del grid
