@@ -25,7 +25,7 @@ const InventoryPanel = () => {
   // Inicializar nivel al cargar componente
   useEffect(() => {
     initializeLevel();
-  }, []);
+  }, [currentLevelData.id]);
 
   const initializeLevel = () => {
     const levelData = prepareGameLevel(getCurrentLevel());
