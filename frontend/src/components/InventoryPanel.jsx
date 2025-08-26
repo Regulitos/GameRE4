@@ -160,9 +160,10 @@ const InventoryPanel = () => {
     const nextLevel = gamelevels.find(level => level.id === nextLevelId);
     
     if (nextLevel) {
-      setCurrentLevelData(prepareGameLevel(nextLevel));
+      const preparedLevel = prepareGameLevel(nextLevel);
+      setCurrentLevelData(preparedLevel);
       setShowCompletionModal(false);
-      initializeLevel();
+      // initializeLevel se ejecutará automáticamente por el useEffect
     }
   };
 
