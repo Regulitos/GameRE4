@@ -100,7 +100,22 @@ const InventoryPanel = () => {
 
     setGridItems(newGridItems);
     setAvailableItems(prev => prev.filter(i => i.id !== item.id));
+    
+    // Verificar si el nivel está completo
+    checkLevelCompletion(prev => prev.filter(i => i.id !== item.id));
+    
     return true;
+  };
+
+  const checkLevelCompletion = (remainingItems) => {
+    if (remainingItems.length === 0) {
+      // ¡Nivel completado!
+      setTimeout(() => {
+        setShowCompletionModal(true);
+        const newProgress = completeLevel(currentLevelData.id);
+        setPlayerProgress(newProgress);
+      }, 500);
+    }
   };
 
   const removeItem = (itemToRemove) => {
