@@ -81,6 +81,13 @@ const InventoryPanel = () => {
     );
   };
 
+  const handleLevelChange = (newLevel) => {
+    setCurrentLevel(newLevel);
+    setGridItems({});
+    setAvailableItems(getItemsForLevel(newLevel));
+    setDraggedItem(null);
+  };
+
   const handleDragMove = useCallback((e) => {
     if (!draggedItem) return;
     
