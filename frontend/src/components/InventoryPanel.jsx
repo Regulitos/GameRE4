@@ -215,9 +215,16 @@ const InventoryPanel = () => {
                 zIndex: 10
               }}
               onClick={() => removeItem(item)}
+              style={{
+                cursor: item.isObstacle || item.isFixed ? 'not-allowed' : 'pointer'
+              }}
             >
               <div 
-                className={`relative w-full h-full rounded border-2 border-yellow-400 shadow-lg ${item.color} text-white font-bold text-sm overflow-hidden`}
+                className={`relative w-full h-full rounded border-2 shadow-lg text-white font-bold text-sm overflow-hidden ${
+                  item.isObstacle ? 'border-red-500 bg-gradient-to-br from-red-800 to-red-900' :
+                  item.isFixed ? 'border-blue-500 bg-gradient-to-br from-blue-700 to-blue-800' :
+                  'border-yellow-400 ' + item.color
+                }`}
                 style={{
                   backgroundImage: item.pattern ? 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)' : 'none'
                 }}
