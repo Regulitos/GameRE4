@@ -143,6 +143,18 @@ const InventoryPanel = () => {
                   backgroundImage: item.pattern ? 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)' : 'none'
                 }}
               >
+                {/* Imagen de fondo */}
+                {item.image && (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-60 rounded"
+                    style={{
+                      backgroundImage: `url(${item.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  />
+                )}
+
                 {/* Renderizar cada celda de la forma */}
                 {item.shape.map(([x, y], index) => (
                   <div
@@ -154,14 +166,16 @@ const InventoryPanel = () => {
                       width: GRID_SIZE,
                       height: GRID_SIZE,
                       backgroundColor: 'currentColor',
-                      opacity: 0.9
+                      opacity: 0.7
                     }}
                   />
                 ))}
                 
-                {/* Nombre del item centrado */}
+                {/* Nombre del item centrado con mejor contraste */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span className="drop-shadow-md text-center">{item.name}</span>
+                  <span className="drop-shadow-lg text-center bg-black bg-opacity-60 rounded px-2 py-1">
+                    {item.name}
+                  </span>
                 </div>
 
                 {/* Indicador de que se puede rotar */}
