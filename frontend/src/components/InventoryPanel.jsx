@@ -204,6 +204,30 @@ const InventoryPanel = () => {
       {/* Panel de inventario - Diseño móvil primero */}
       <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl flex-1 max-w-md mx-auto lg:max-w-none">
         <div className="p-3">
+          {/* Selector de nivel */}
+          <div className="mb-3">
+            <div className="flex gap-1 justify-center mb-2">
+              {Object.entries(levelConfigs).map(([level, config]) => (
+                <Button
+                  key={level}
+                  variant={currentLevel === level ? "default" : "outline"}
+                  size="sm"
+                  className={`text-xs px-2 py-1 ${
+                    currentLevel === level 
+                      ? 'bg-yellow-600 text-black border-yellow-400' 
+                      : 'bg-gray-700 text-yellow-400 border-yellow-600 hover:bg-yellow-600 hover:text-black'
+                  }`}
+                  onClick={() => handleLevelChange(level)}
+                >
+                  {config.title}
+                </Button>
+              ))}
+            </div>
+            <p className="text-yellow-300 text-center text-xs">
+              {currentConfig.description}
+            </p>
+          </div>
+
           <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2">
             INVENTORY GRID
           </h2>
