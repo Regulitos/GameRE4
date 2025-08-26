@@ -151,11 +151,20 @@ const InventoryPanel = () => {
     );
   };
 
-  const handleLevelChange = (newLevel) => {
-    setCurrentLevel(newLevel);
-    setGridItems({});
-    setAvailableItems(getItemsForLevel(newLevel));
-    setDraggedItem(null);
+  const goToNextLevel = () => {
+    const nextLevelId = currentLevelData.id + 1;
+    const nextLevel = gamelevels.find(level => level.id === nextLevelId);
+    
+    if (nextLevel) {
+      setCurrentLevelData(prepareGameLevel(nextLevel));
+      setShowCompletionModal(false);
+      initializeLevel();
+    }
+  };
+
+  const restartLevel = () => {
+    setShowCompletionModal(false);
+    initializeLevel();
   };
 
   const handleDragMove = useCallback((e) => {
