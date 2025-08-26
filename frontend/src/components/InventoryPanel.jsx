@@ -408,6 +408,42 @@ const InventoryPanel = () => {
           </div>
         </div>
       )}
+
+      {/* Modal de completar nivel */}
+      {showCompletionModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="bg-gray-800 border-yellow-600 border-2 p-6 max-w-sm mx-4">
+            <div className="text-center">
+              <h3 className="text-yellow-400 text-xl font-bold mb-2">
+                ¡Nivel Completado!
+              </h3>
+              <p className="text-yellow-300 mb-1">
+                {currentLevelData.title}
+              </p>
+              <div className="flex justify-center mb-4">
+                <span className="text-yellow-400 text-2xl">⭐</span>
+              </div>
+              <div className="flex gap-2 justify-center">
+                <Button
+                  onClick={restartLevel}
+                  variant="outline"
+                  className="bg-gray-700 text-yellow-400 border-yellow-600 hover:bg-yellow-600 hover:text-black"
+                >
+                  Reintentar
+                </Button>
+                {currentLevelData.id < gamelevels.length && (
+                  <Button
+                    onClick={goToNextLevel}
+                    className="bg-yellow-600 text-black hover:bg-yellow-500"
+                  >
+                    Siguiente
+                  </Button>
+                )}
+              </div>
+            </div>
+          </Card>
+        </div>
+      )}
     </div>
   );
 };
