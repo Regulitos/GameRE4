@@ -305,36 +305,69 @@ export const allItems = [
   }
 ];
 
-// Función para obtener items según el nivel
-export const getItemsForLevel = (level) => {
-  const config = levelConfigs[level];
-  if (!config) return [];
-
-  let availableItems = [];
-  
-  // Incluir items del nivel actual y anteriores
-  switch(level) {
-    case 'easy':
-      availableItems = allItems.filter(item => item.level === 'easy');
-      break;
-    case 'normal':
-      availableItems = allItems.filter(item => ['easy', 'normal'].includes(item.level));
-      break;
-    case 'hard':
-      availableItems = allItems.filter(item => ['easy', 'normal', 'hard'].includes(item.level));
-      break;
-    case 'expert':
-      availableItems = [...allItems];
-      break;
-    default:
-      availableItems = allItems.filter(item => item.level === 'easy');
-  }
-
-  return availableItems.slice(0, config.maxItems);
+// Función para obtener progreso del jugador
+export const getPlayerProgress = () => {
+  const saved = localStorage.getItem('puzzleInventoryProgress');
+  return saved ? JSON.parse(saved) : { currentLevel: 1, completedLevels: [], stars: 0 };
 };
 
-// Exportar items por defecto (nivel fácil)
-export const mockItems = getItemsForLevel('easy');
+// Función para guardar progreso
+export const savePlayerProgress = (progress) => {
+  localStorage.setItem('puzzleInventoryProgress', JSON.stringify(progress));
+};
+
+// Función para obtener nivel actual
+export const getCurrentLevel = () => {
+  const progress = getPlayerProgress();
+  return gamelevels.find(level => level.id === progress.currentLevel) || gamelevels[0];
+};
+
+// Función para completar nivel
+export const completeLevel = (levelId, stars = 1) => {
+  const progress = getPlayerProgress();
+  
+  if (!progress.completedLevels.includes(levelId)) {
+    progress.completedLevels.push(levelId);
+    progress.stars += stars;
+  }
+  
+  // Desbloquear siguiente nivel
+  if (levelId === progress.currentLevel && levelId < gamelevels.length) {
+    progress.currentLevel = levelId + 1;
+  }
+  
+  savePlayerProgress(progress);
+  return progress;
+};
+
+// Función para preparar items del nivel con imágenes
+export const prepareGameLevel = (levelData) => {
+  const itemImages = {
+    'Knife': 'https://images.unsplash.com/photo-1589648508211-fa8971fbeb12',
+    'Herb': 'https://images.unsplash.com/photo-1605176173609-a0067079b419',
+    'Key': 'https://images.unsplash.com/photo-1674009598613-6f8ce45351a4',
+    'Pistol': 'https://images.unsplash.com/photo-1577081467890-d407baf6fc1f',
+    'Pills': 'https://images.pexels.com/photos/7723394/pexels-photo-7723394.jpeg',
+    'Ammo': 'https://images.unsplash.com/photo-1724140334358-663a798d4888',
+    'L-Gun': 'https://images.unsplash.com/photo-1632106280914-a491a201f226',
+    'Aid Kit': 'https://images.unsplash.com/photo-1561328165-f0b762a9508e',
+    'Card': 'https://images.pexels.com/photos/33578985/pexels-photo-33578985.jpeg',
+    'Rifle': 'https://images.unsplash.com/photo-1577081467890-d407baf6fc1f',
+    'T-Virus': 'https://images.unsplash.com/photo-1732360106288-19ce099b2cbd',
+    'Case': 'https://images.unsplash.com/photo-1704656296628-794703d8a727'
+  };
+
+  return {
+    ...levelData,
+    availableItems: levelData.availableItems.map(item => ({
+      ...item,
+      color: 'bg-gradient-to-br from-gray-600 to-gray-800',
+      image: itemImages[item.name] || null,
+      pattern: false,
+      rotation: 0
+    }))
+  };
+};
 
 // Items para nivel especial (grid grande)
 export const specialLevelItems = [
