@@ -76,14 +76,26 @@ const InventoryItem = ({ item, onDragStart, onItemRotate, isDragging, isMobile =
           backgroundImage: item.pattern ? 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)' : 'none'
         }}
       >
-        {/* Renderizar forma */}
+        {/* Imagen de fondo */}
+        {item.image && (
+          <div 
+            className="absolute inset-1 bg-cover bg-center opacity-70 rounded"
+            style={{
+              backgroundImage: `url(${item.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
+        )}
+
+        {/* Renderizar forma con overlay */}
         <div className="absolute inset-1">
           {renderShape()}
         </div>
         
-        {/* Nombre del item */}
+        {/* Nombre del item con mejor contraste */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="drop-shadow-md text-center leading-tight p-1 z-10">
+          <span className="drop-shadow-lg text-center leading-tight p-1 z-10 bg-black bg-opacity-50 rounded px-2 text-white font-bold">
             {isMobile && item.name.length > 6 ? item.name.slice(0, 4) + '.' : item.name}
           </span>
         </div>
