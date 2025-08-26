@@ -1,27 +1,48 @@
-// Sistema de niveles progresivos tipo Candy Crush
+// Sistema de niveles progresivos tipo Candy Crush - Balanceados
 export const gamelevels = [
-  // Nivel 1 - Tutorial básico
+  // Nivel 1 - Tutorial básico (36 total - 2 obstáculos = 34 espacios libres)
   {
     id: 1,
-    title: "Primer Día",
+    title: "Primer Día", 
     description: "Aprende lo básico del inventario",
     gridCols: 6,
     gridRows: 6,
-    objective: "Coloca todos los items en el grid",
+    objective: "Llena todo el espacio disponible",
     obstaclesFixed: [
-      // Algunos obstáculos en el centro
       { row: 2, col: 2, type: 'block', name: 'Muro' },
       { row: 3, col: 3, type: 'block', name: 'Muro' }
     ],
     availableItems: [
-      { id: 101, name: 'Knife', shape: [[0,0]], rotatable: false },
-      { id: 102, name: 'Herb', shape: [[0,0]], rotatable: false },
-      { id: 103, name: 'Key', shape: [[0,0]], rotatable: false }
+      // 34 espacios = necesitamos items que sumen eso + algunos extra
+      { id: 101, name: 'Knife', shape: [[0,0]], rotatable: false }, // 1
+      { id: 102, name: 'Herb', shape: [[0,0]], rotatable: false }, // 1
+      { id: 103, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 104, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 105, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 106, name: 'Ammo1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 107, name: 'Ammo2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 108, name: 'Card', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 109, name: 'Scope', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 110, name: 'Gem1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 111, name: 'Gem2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 112, name: 'Case', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 113, name: 'Aid Kit', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 114, name: 'Med1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 115, name: 'Med2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 116, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 117, name: 'Part1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 118, name: 'Part2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 119, name: 'Wire', shape: [[0,0], [1,0], [2,0], [3,0]], rotatable: true }, // 4
+      { id: 120, name: 'Small', shape: [[0,0]], rotatable: false }, // 1
+      { id: 121, name: 'Tiny', shape: [[0,0]], rotatable: false }, // 1
+      { id: 122, name: 'Mini', shape: [[0,0]], rotatable: false }, // 1
+      { id: 123, name: 'Bit', shape: [[0,0]], rotatable: false } // 1
+      // Total: 38 espacios (4 extra para opciones estratégicas)
     ],
     stars: 1
   },
 
-  // Nivel 2 - Introducir formas rectangulares
+  // Nivel 2 - Formas rectangulares (36 total - 3 obstáculos = 33 espacios libres)  
   {
     id: 2,
     title: "Día de Entrenamiento",
@@ -35,107 +56,215 @@ export const gamelevels = [
       { row: 4, col: 4, type: 'block', name: 'Muro' }
     ],
     availableItems: [
-      { id: 201, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true },
-      { id: 202, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true },
-      { id: 203, name: 'Ammo', shape: [[0,0]], rotatable: false }
+      // 33 espacios necesarios + extras
+      { id: 201, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 202, name: 'Rifle', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 203, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 204, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 205, name: 'Ammo', shape: [[0,0]], rotatable: false }, // 1
+      { id: 206, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 207, name: 'Card', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 208, name: 'Scope', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 209, name: 'Battery', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 210, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 211, name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 212, name: 'Box', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 213, name: 'Part', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 214, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 215, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
+      { id: 216, name: 'Med', shape: [[0,0]], rotatable: false }, // 1
+      { id: 217, name: 'Herb', shape: [[0,0]], rotatable: false }, // 1
+      { id: 218, name: 'Bit1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 219, name: 'Bit2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 220, name: 'Tiny', shape: [[0,0]], rotatable: false } // 1
+      // Total: 37 espacios (4 extras)
     ],
     stars: 1
   },
 
-  // Nivel 3 - Formas L
+  // Nivel 3 - Formas L (42 total - 5 obstáculos = 37 espacios libres)
   {
     id: 3,
-    title: "Primer Encuentro",
+    title: "Primer Encuentro", 
     description: "Aparecen formas complejas",
     gridCols: 7,
     gridRows: 6,
     objective: "Acomoda el equipo en L",
     obstaclesFixed: [
-      { row: 0, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] },
+      { row: 0, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] }, // 3 espacios
       { row: 5, col: 4, type: 'block', name: 'Debris' },
       { row: 5, col: 5, type: 'block', name: 'Debris' }
     ],
     availableItems: [
-      { id: 301, name: 'L-Gun', shape: [[0,0], [0,1], [1,1]], rotatable: true },
-      { id: 302, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true },
-      { id: 303, name: 'Card', shape: [[0,0]], rotatable: false }
+      // 37 espacios necesarios
+      { id: 301, name: 'L-Gun', shape: [[0,0], [0,1], [1,1]], rotatable: true }, // 3
+      { id: 302, name: 'L-Tool', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 303, name: 'L-Case', shape: [[0,0], [0,1], [0,2], [1,2]], rotatable: true }, // 4
+      { id: 304, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 305, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 306, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 307, name: 'Card', shape: [[0,0]], rotatable: false }, // 1
+      { id: 308, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 309, name: 'Ammo', shape: [[0,0]], rotatable: false }, // 1
+      { id: 310, name: 'Battery', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 311, name: 'Scope', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 312, name: 'Case', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 313, name: 'Box', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 314, name: 'Part', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 315, name: 'Wire', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 316, name: 'Med1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 317, name: 'Med2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 318, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
+      { id: 319, name: 'Herb', shape: [[0,0]], rotatable: false }, // 1
+      { id: 320, name: 'Small', shape: [[0,0]], rotatable: false } // 1
+      // Total: 40 espacios (3 extras)
     ],
     stars: 1
   },
 
-  // Nivel 4 - Más obstáculos
+  // Nivel 4 - Laboratorio (48 total - 6 obstáculos = 42 espacios libres)
   {
     id: 4,
     title: "Laboratorio",
-    description: "El espacio se reduce",
+    description: "El espacio se reduce", 
     gridCols: 8,
     gridRows: 6,
     objective: "Laboratorio lleno de obstáculos",
     obstaclesFixed: [
-      // Crear un pasillo con obstáculos
       { row: 1, col: 1, type: 'block', name: 'Mesa' },
       { row: 1, col: 2, type: 'block', name: 'Mesa' },
       { row: 3, col: 4, type: 'block', name: 'Equipment' },
       { row: 3, col: 5, type: 'block', name: 'Equipment' },
-      { row: 2, col: 6, type: 'fixed', name: 'T-Virus', shape: [[0,0]] }
+      { row: 2, col: 6, type: 'fixed', name: 'T-Virus', shape: [[0,0]] } // 1 espacio
     ],
     availableItems: [
-      { id: 401, name: 'Knife', shape: [[0,0], [0,1]], rotatable: true },
-      { id: 402, name: 'Syringe', shape: [[0,0], [1,0], [1,1]], rotatable: true },
-      { id: 403, name: 'Sample', shape: [[0,0]], rotatable: false },
-      { id: 404, name: 'Data', shape: [[0,0], [1,0]], rotatable: true }
+      // 42 espacios necesarios
+      { id: 401, name: 'Knife', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 402, name: 'Syringe', shape: [[0,0], [1,0], [1,1]], rotatable: true }, // 3
+      { id: 403, name: 'Sample', shape: [[0,0]], rotatable: false }, // 1
+      { id: 404, name: 'Data', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 405, name: 'L-Beaker', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 406, name: 'T-Sample', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 407, name: 'Case', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 408, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 409, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 410, name: 'Battery', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 411, name: 'Card', shape: [[0,0]], rotatable: false }, // 1
+      { id: 412, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 413, name: 'Scope', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 414, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 415, name: 'Box', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 416, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 417, name: 'Part', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 418, name: 'Med1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 419, name: 'Med2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 420, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
+      { id: 421, name: 'Bit1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 422, name: 'Bit2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 423, name: 'Tiny', shape: [[0,0]], rotatable: false } // 1
+      // Total: 46 espacios (4 extras)
     ],
     stars: 1
   },
 
-  // Nivel 5 - Formas T y Z
+  // Nivel 5 - Crisis (64 total - 8 obstáculos = 56 espacios libres)
   {
     id: 5,
     title: "Crisis",
     description: "Formas complejas bajo presión",
     gridCols: 8,
     gridRows: 8,
-    objective: "Sobrevive con formas complejas",
+    objective: "Sobrevive con formas complejas", 
     obstaclesFixed: [
-      // Crear un patrón más complejo
       { row: 2, col: 2, type: 'block', name: 'Wall' },
       { row: 2, col: 3, type: 'block', name: 'Wall' },
       { row: 2, col: 4, type: 'block', name: 'Wall' },
-      { row: 5, col: 1, type: 'fixed', name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]] },
+      { row: 5, col: 1, type: 'fixed', name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]] }, // 4 espacios
       { row: 6, col: 6, type: 'block', name: 'Rubble' }
     ],
     availableItems: [
-      { id: 501, name: 'T-Piece', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true },
-      { id: 502, name: 'Z-Part', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true },
-      { id: 503, name: 'Key', shape: [[0,0]], rotatable: false }
+      // 56 espacios necesarios + extras para opciones
+      { id: 501, name: 'T-Piece', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 502, name: 'T-Tool', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 503, name: 'Z-Part', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true }, // 4
+      { id: 504, name: 'Z-Case', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true }, // 4
+      { id: 505, name: 'L-Gun', shape: [[0,0], [0,1], [0,2], [1,2]], rotatable: true }, // 4
+      { id: 506, name: 'L-Box', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 507, name: 'L-Tool', shape: [[0,0], [0,1], [1,1]], rotatable: true }, // 3
+      { id: 508, name: 'Case', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 509, name: 'Rifle', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 510, name: 'Box', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 511, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 512, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 513, name: 'Battery', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 514, name: 'Scope', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 515, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 516, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 517, name: 'Part', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 518, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 519, name: 'Card', shape: [[0,0]], rotatable: false }, // 1
+      { id: 520, name: 'Ammo', shape: [[0,0]], rotatable: false }, // 1
+      { id: 521, name: 'Med1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 522, name: 'Med2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 523, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
+      { id: 524, name: 'Bit1', shape: [[0,0]], rotatable: false }, // 1
+      { id: 525, name: 'Bit2', shape: [[0,0]], rotatable: false }, // 1
+      { id: 526, name: 'Tiny', shape: [[0,0]], rotatable: false } // 1
+      // Total: 60 espacios (4 extras)
     ],
     stars: 1
   },
 
-  // Nivel 6 - Desafío mayor
+  // Nivel 6 - Escape Final (80 total - 8 obstáculos = 72 espacios libres)
   {
     id: 6,
     title: "Escape Final",
     description: "El inventario más complejo",
     gridCols: 10,
-    gridRows: 8,
+    gridRows: 8, 
     objective: "Organiza todo para escapar",
     obstaclesFixed: [
-      // Patrón complejo de obstáculos
       { row: 0, col: 4, type: 'block', name: 'Exit Door' },
-      { row: 1, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] },
+      { row: 1, col: 0, type: 'fixed', name: 'Rifle', shape: [[0,0], [1,0], [2,0]] }, // 3 espacios
       { row: 3, col: 3, type: 'block', name: 'Pillar' },
       { row: 3, col: 4, type: 'block', name: 'Pillar' },
       { row: 4, col: 3, type: 'block', name: 'Pillar' },
       { row: 4, col: 4, type: 'block', name: 'Pillar' },
-      { row: 7, col: 8, type: 'fixed', name: 'Aid', shape: [[0,0], [1,0]] }
+      { row: 7, col: 8, type: 'fixed', name: 'Aid', shape: [[0,0], [1,0]] } // 2 espacios
     ],
     availableItems: [
-      { id: 601, name: 'Shotgun', shape: [[0,0], [1,0], [2,0]], rotatable: true },
-      { id: 602, name: 'L-Scope', shape: [[0,0], [0,1], [1,1]], rotatable: true },
-      { id: 603, name: 'Z-Key', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true },
-      { id: 604, name: 'Med Kit', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true },
-      { id: 605, name: 'Battery', shape: [[0,0]], rotatable: false }
+      // 72 espacios necesarios + extras
+      { id: 601, name: 'Shotgun', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 602, name: 'L-Scope', shape: [[0,0], [0,1], [1,1]], rotatable: true }, // 3
+      { id: 603, name: 'Z-Key', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true }, // 4
+      { id: 604, name: 'T-Kit', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 605, name: 'L-Case', shape: [[0,0], [0,1], [0,2], [1,2]], rotatable: true }, // 4
+      { id: 606, name: 'Z-Tool', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true }, // 4
+      { id: 607, name: 'T-Box', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 608, name: 'L-Gun', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 609, name: 'BigCase', shape: [[0,0], [1,0], [2,0], [0,1], [1,1], [2,1]], rotatable: true }, // 6
+      { id: 610, name: 'LongRifle', shape: [[0,0], [1,0], [2,0], [3,0]], rotatable: true }, // 4
+      { id: 611, name: 'Case1', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 612, name: 'Case2', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 613, name: 'Box1', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 614, name: 'Box2', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 615, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 616, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 617, name: 'Battery1', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 618, name: 'Battery2', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 619, name: 'Scope1', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 620, name: 'Scope2', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 621, name: 'Tool1', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 622, name: 'Tool2', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 623, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 624, name: 'Part1', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 625, name: 'Part2', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 626, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 627, name: 'Card', shape: [[0,0]], rotatable: false }, // 1
+      { id: 628, name: 'Ammo', shape: [[0,0]], rotatable: false }, // 1
+      { id: 629, name: 'Med', shape: [[0,0]], rotatable: false }, // 1
+      { id: 630, name: 'Gem', shape: [[0,0]], rotatable: false } // 1
+      // Total: 76 espacios (4 extras)
     ],
     stars: 1
   }
