@@ -211,24 +211,22 @@ const InventoryPanel = () => {
           cells.push(
             <div
               key={`item-${item.id}`}
-              className="absolute cursor-pointer hover:brightness-110 transition-all"
+              className="absolute hover:brightness-110 transition-all"
               style={{
                 left: item.col * GRID_SIZE,
                 top: item.row * GRID_SIZE,
                 width: bounds.width * GRID_SIZE,
                 height: bounds.height * GRID_SIZE,
-                zIndex: 10
-              }}
-              onClick={() => removeItem(item)}
-              style={{
+                zIndex: 10,
                 cursor: item.isObstacle || item.isFixed ? 'not-allowed' : 'pointer'
               }}
+              onClick={() => removeItem(item)}
             >
               <div 
                 className={`relative w-full h-full rounded border-2 shadow-lg text-white font-bold text-sm overflow-hidden ${
                   item.isObstacle ? 'border-red-500 bg-gradient-to-br from-red-800 to-red-900' :
                   item.isFixed ? 'border-blue-500 bg-gradient-to-br from-blue-700 to-blue-800' :
-                  'border-yellow-400 ' + item.color
+                  'border-yellow-400 ' + (item.color || 'bg-gradient-to-br from-gray-600 to-gray-800')
                 }`}
                 style={{
                   backgroundImage: item.pattern ? 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)' : 'none'
