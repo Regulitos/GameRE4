@@ -13,31 +13,24 @@ export const gamelevels = [
       { row: 3, col: 3, type: 'block', name: 'Muro' }
     ],
     availableItems: [
-      // 34 espacios = necesitamos items que sumen eso + algunos extra
-      { id: 101, name: 'Knife', shape: [[0,0]], rotatable: false }, // 1
-      { id: 102, name: 'Herb', shape: [[0,0]], rotatable: false }, // 1
-      { id: 103, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
-      { id: 104, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      // Menos items 1x1, más formas complejas - 34 espacios necesarios
+      { id: 101, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 102, name: 'Rifle', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 103, name: 'L-Tool', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 104, name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
       { id: 105, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 106, name: 'Ammo1', shape: [[0,0]], rotatable: false }, // 1
-      { id: 107, name: 'Ammo2', shape: [[0,0]], rotatable: false }, // 1
-      { id: 108, name: 'Card', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 109, name: 'Scope', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 110, name: 'Gem1', shape: [[0,0]], rotatable: false }, // 1
-      { id: 111, name: 'Gem2', shape: [[0,0]], rotatable: false }, // 1
-      { id: 112, name: 'Case', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
-      { id: 113, name: 'Aid Kit', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
-      { id: 114, name: 'Med1', shape: [[0,0]], rotatable: false }, // 1
-      { id: 115, name: 'Med2', shape: [[0,0]], rotatable: false }, // 1
-      { id: 116, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
-      { id: 117, name: 'Part1', shape: [[0,0]], rotatable: false }, // 1
-      { id: 118, name: 'Part2', shape: [[0,0]], rotatable: false }, // 1
-      { id: 119, name: 'Wire', shape: [[0,0], [1,0], [2,0], [3,0]], rotatable: true }, // 4
-      { id: 120, name: 'Small', shape: [[0,0]], rotatable: false }, // 1
-      { id: 121, name: 'Tiny', shape: [[0,0]], rotatable: false }, // 1
-      { id: 122, name: 'Mini', shape: [[0,0]], rotatable: false }, // 1
-      { id: 123, name: 'Bit', shape: [[0,0]], rotatable: false } // 1
-      // Total: 38 espacios (4 extra para opciones estratégicas)
+      { id: 106, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 107, name: 'Battery', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 108, name: 'Scope', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 109, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 110, name: 'T-Part', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 111, name: 'L-Case', shape: [[0,0], [0,1], [1,1]], rotatable: true }, // 3
+      { id: 112, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 113, name: 'Card', shape: [[0,0]], rotatable: false }, // 1
+      { id: 114, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
+      { id: 115, name: 'Med', shape: [[0,0]], rotatable: false }, // 1
+      { id: 116, name: 'Long', shape: [[0,0], [1,0], [2,0], [3,0]], rotatable: true } // 4
+      // Total: 38 espacios (4 extras) - Solo 4 items de 1x1
     ],
     stars: 1
   },
