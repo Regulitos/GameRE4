@@ -1,10 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { gamelevels, getCurrentLevel, prepareGameLevel, completeLevel, getPlayerProgress } from '../data/mock';
+import { gamelevels, prepareGameLevel } from '../data/mock';
 import InventoryItem from './InventoryItem';
 import GridSlot from './GridSlot';
 import { rotateItem, canPlaceShape, getShapeCells, getShapeBounds } from '../utils/itemUtils';
+import gameAPI from '../services/gameAPI';
 
 const InventoryPanel = () => {
   const [currentLevelData, setCurrentLevelData] = useState(() => {
