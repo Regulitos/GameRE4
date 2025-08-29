@@ -361,25 +361,30 @@ const InventoryPanel = () => {
             ITEMS
           </h2>
           <div className="grid grid-cols-6 lg:grid-cols-4 gap-2 max-h-[300px] lg:max-h-[500px] overflow-y-auto">
-            {availableItems.slice(0, 12).map(item => (
-              <InventoryItem
-                key={item.id}
-                item={item}
-                onDragStart={handleDragStart}
-                onItemRotate={handleItemRotate}
-                isDragging={draggedItem?.id === item.id}
-                isMobile={true}
-              />
-            ))}
+            {/* Grid fijo de 24 posiciones (4 filas x 6 columnas) */}
+            {Array.from({ length: 24 }, (_, index) => {
+              const item = availableItems[index];
+              return (
+                <div key={`slot-${index}`} className="w-12 h-12 border border-gray-600 rounded flex items-center justify-center">
+                  {item ? (
+                    <InventoryItem
+                      key={item.id}
+                      item={item}
+                      onDragStart={handleDragStart}
+                      onItemRotate={handleItemRotate}
+                      isDragging={draggedItem?.id === item.id}
+                      isMobile={true}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-800 rounded opacity-50"></div>
+                  )}
+                </div>
+              );
+            })}
           </div>
           {availableItems.length === 0 && (
             <p className="text-gray-500 text-center text-xs lg:text-sm mt-4">
-              No hay items
-            </p>
-          )}
-          {availableItems.length > 12 && (
-            <p className="text-yellow-400 text-center text-xs mt-2">
-              +{availableItems.length - 12} items más
+              ¡Nivel completado!
             </p>
           )}
         </div>
