@@ -164,14 +164,34 @@ const InventoryPanel = () => {
     return true;
   };
 
-  const checkLevelCompletion = (remainingItems) => {
+  const checkLevelCompletion = async (remainingItems, finalGridState) => {
     if (remainingItems.length === 0) {
       // ¡Nivel completado!
-      setTimeout(() => {
+      try {
+        // Completar sesión en el servidor
+        const completionResult = await gameAPI.completeGameSession(finalGridState);
+        
+        // Actualizar progreso local
+        const updatedProgress = {
+          ...playerProgress,
+          stars: playerProgress.stars + completionResult.stars_earned,
+          completedLevels: [...playerProgress.completedLevels, currentLevelData.id].filter((v, i, arr) => arr.indexOf(v) === i)
+        };
+        
+        // Si es el nivel actual, desbloquear el siguiente
+        if (currentLevelData.id === playerProgress.currentLevel) {
+          updatedProgress.currentLevel = currentLevelData.id + 1;
+        }
+        
+        setPlayerProgress(updatedProgress);
+        setCompletionData(completionResult);
         setShowCompletionModal(true);
-        const newProgress = completeLevel(currentLevelData.id);
-        setPlayerProgress(newProgress);
-      }, 500);
+        
+      } catch (error) {
+        console.error('Error completing level:', error);
+        // Mostrar modal de completado aunque haya error en el servidor
+        setShowCompletionModal(true);
+      }
     }
   };
 
