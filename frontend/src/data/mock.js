@@ -455,21 +455,48 @@ export const completeLevel = (levelId, stars = 1) => {
   return progress;
 };
 
-// Función para preparar items del nivel con imágenes
+// Función para preparar items del nivel con imágenes específicas
 export const prepareGameLevel = (levelData) => {
   const itemImages = {
-    'Knife': 'https://images.unsplash.com/photo-1589648508211-fa8971fbeb12',
-    'Herb': 'https://images.unsplash.com/photo-1605176173609-a0067079b419',
-    'Key': 'https://images.unsplash.com/photo-1674009598613-6f8ce45351a4',
-    'Pistol': 'https://images.unsplash.com/photo-1577081467890-d407baf6fc1f',
+    // Armas
+    'Pistol': 'https://images.unsplash.com/photo-1595590424283-b8f17842773f',
+    'Rifle': 'https://images.unsplash.com/photo-1585589197566-b482772f8831',
+    'L-Gun': 'https://images.unsplash.com/photo-1595590424283-b8f17842773f',
+    'Shotgun': 'https://images.unsplash.com/photo-1676496649264-6d1318f645f9',
+    
+    // Herramientas y equipos
+    'L-Tool': 'https://images.unsplash.com/photo-1668874184010-87aa286683dd',
+    'Tool': 'https://images.unsplash.com/photo-1624905917904-4afb5105b5ae',
+    'T-Tool': 'https://images.unsplash.com/photo-1668874184010-87aa286683dd',
+    'Z-Tool': 'https://images.unsplash.com/photo-1624905917904-4afb5105b5ae',
+    'Knife': 'https://images.unsplash.com/photo-1613206485477-34b2b17fa93f',
+    'Wire': 'https://images.pexels.com/photos/4993242/pexels-photo-4993242.jpeg',
+    'Part': 'https://images.unsplash.com/photo-1624905917904-4afb5105b5ae',
+    'Long': 'https://images.unsplash.com/photo-1585589197566-b482772f8831',
+    
+    // Municiones y suministros
+    'Battery': 'https://images.unsplash.com/photo-1617619665381-88e2944bdb70',
+    'Scope': 'https://images.unsplash.com/photo-1585589197566-b482772f8831',
+    'T-Part': 'https://images.unsplash.com/photo-1617619665381-88e2944bdb70',
+    'Z-Part': 'https://images.pexels.com/photos/4993242/pexels-photo-4993242.jpeg',
+    
+    // Medicinas y suministros médicos
     'Pills': 'https://images.pexels.com/photos/7723394/pexels-photo-7723394.jpeg',
-    'Ammo': 'https://images.unsplash.com/photo-1724140334358-663a798d4888',
-    'L-Gun': 'https://images.unsplash.com/photo-1632106280914-a491a201f226',
     'Aid Kit': 'https://images.unsplash.com/photo-1561328165-f0b762a9508e',
+    'Med': 'https://images.pexels.com/photos/7723394/pexels-photo-7723394.jpeg',
+    
+    // Contenedores y cajas
+    'Case': 'https://images.unsplash.com/photo-1704656296628-794703d8a727',
+    'L-Case': 'https://images.unsplash.com/photo-1704656296628-794703d8a727',
+    'Box': 'https://images.unsplash.com/photo-1704656296628-794703d8a727',
+    'T-Kit': 'https://images.unsplash.com/photo-1561328165-f0b762a9508e',
+    'BigCase': 'https://images.unsplash.com/photo-1704656296628-794703d8a727',
+    
+    // Items especiales
+    'Key': 'https://images.unsplash.com/photo-1674009598613-6f8ce45351a4',
     'Card': 'https://images.pexels.com/photos/33578985/pexels-photo-33578985.jpeg',
-    'Rifle': 'https://images.unsplash.com/photo-1577081467890-d407baf6fc1f',
-    'T-Virus': 'https://images.unsplash.com/photo-1732360106288-19ce099b2cbd',
-    'Case': 'https://images.unsplash.com/photo-1704656296628-794703d8a727'
+    'Gem': 'https://images.unsplash.com/photo-1674009598613-6f8ce45351a4',
+    'T-Virus': 'https://images.unsplash.com/photo-1732360106288-19ce099b2cbd'
   };
 
   return {
