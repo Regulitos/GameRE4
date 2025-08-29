@@ -23,10 +23,58 @@ const InventoryPanel = () => {
   const GRID_COLS = currentLevelData.gridCols;
   const GRID_ROWS = currentLevelData.gridRows;
 
-  // Inicializar nivel al cargar componente
+  // Inicializar progreso y nivel al cargar componente
   useEffect(() => {
-    initializeLevel();
-  }, [currentLevelData.id]);
+    initializeGame();
+  }, []);
+
+  // Reinicializar cuando cambie el nivel
+  useEffect(() => {
+    if (currentLevelData) {
+      initializeLevel();
+      startGameSession();
+    }
+  }, [currentLevelData?.id]);
+
+  const initializeGame = async () => {
+    try {
+      setLoading(true);
+      
+      // Obtener progreso del servidor
+      const progress = await gameAPI.getPlayerProgress();
+      
+      // Convertir formato del servidor al formato local
+      const localProgress = {
+        currentLevel: progress.current_level,
+        stars: progress.stars_earned,
+        completedLevels: progress.completed_levels
+      };
+      
+      setPlayerProgress(localProgress);
+      
+      // Cargar nivel actual
+      const levelData = gamelevels.find(level => level.id === progress.current_level) || gamelevels[0];
+      setCurrentLevelData(prepareGameLevel(levelData));
+      
+    } catch (error) {
+      console.error('Error initializing game:', error);
+      // Fallback al primer nivel
+      const levelData = prepareGameLevel(gamelevels[0]);
+      setCurrentLevelData(levelData);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const startGameSession = async () => {
+    if (currentLevelData && !gameAPI.isSessionActive()) {
+      try {
+        await gameAPI.startGameSession(currentLevelData.id);
+      } catch (error) {
+        console.error('Error starting game session:', error);
+      }
+    }
+  };
 
   const initializeLevel = () => {
     // Usar el nivel actual ya establecido
