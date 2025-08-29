@@ -79,23 +79,36 @@ const InventoryItem = ({ item, onDragStart, onItemRotate, isDragging, isMobile =
         {/* Imagen de fondo */}
         {item.image && (
           <div 
-            className="absolute inset-1 bg-cover bg-center opacity-70 rounded"
+            className="absolute inset-1 bg-cover bg-center rounded"
             style={{
-              backgroundImage: `url(${item.image})`,
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${item.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
           />
         )}
 
-        {/* Renderizar forma con overlay */}
+        {/* Renderizar forma con overlay sutil */}
         <div className="absolute inset-1">
-          {renderShape()}
+          {item.shape.map(([x, y], index) => (
+            <div
+              key={index}
+              className="absolute border border-yellow-300"
+              style={{
+                left: x * cellSize,
+                top: y * cellSize,
+                width: cellSize,
+                height: cellSize,
+                backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                borderWidth: '1px'
+              }}
+            />
+          ))}
         </div>
         
         {/* Nombre del item con mejor contraste */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="drop-shadow-lg text-center leading-tight p-1 z-10 bg-black bg-opacity-50 rounded px-2 text-white font-bold">
+          <span className="drop-shadow-xl text-center leading-tight p-1 z-10 bg-black bg-opacity-80 rounded-md px-2 py-1 text-yellow-300 font-bold text-xs border border-yellow-600">
             {isMobile && item.name.length > 6 ? item.name.slice(0, 4) + '.' : item.name}
           </span>
         </div>
