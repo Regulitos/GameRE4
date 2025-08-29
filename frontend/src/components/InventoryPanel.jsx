@@ -305,8 +305,10 @@ const InventoryPanel = () => {
       style={{ userSelect: 'none' }}
     >
       {/* Panel de inventario - Diseño móvil primero */}
-      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl flex-1 max-w-md mx-auto lg:max-w-none">
-        <div className="p-3">
+      <Card className="bg-black bg-opacity-80 border-yellow-600 border-2 shadow-2xl backdrop-blur-sm flex-1 max-w-md mx-auto lg:max-w-none">
+        <div className="p-3" style={{
+          backgroundImage: `linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%)`,
+        }}>
           {/* Información del nivel actual */}
           <div className="mb-3 text-center">
             <div className="flex justify-between items-center mb-2">
