@@ -152,10 +152,14 @@ const InventoryPanel = () => {
     });
 
     setGridItems(newGridItems);
-    setAvailableItems(prev => prev.filter(i => i.id !== item.id));
+    const newAvailableItems = availableItems.filter(i => i.id !== item.id);
+    setAvailableItems(newAvailableItems);
+    
+    // Incrementar contador de movimientos
+    gameAPI.incrementMoves();
     
     // Verificar si el nivel está completo
-    checkLevelCompletion(prev => prev.filter(i => i.id !== item.id));
+    checkLevelCompletion(newAvailableItems, newGridItems);
     
     return true;
   };
