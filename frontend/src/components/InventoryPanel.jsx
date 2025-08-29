@@ -215,6 +215,9 @@ const InventoryPanel = () => {
       ...itemToRemove,
       id: itemToRemove.originalId || itemToRemove.id
     }]);
+    
+    // Incrementar contador de movimientos
+    gameAPI.incrementMoves();
   };
 
   const handleDragStart = (item) => {
