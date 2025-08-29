@@ -357,9 +357,11 @@ const InventoryPanel = () => {
       </Card>
 
       {/* Panel de items disponibles - Compacto para móvil */}
-      <Card className="bg-gray-800 border-yellow-600 border-2 shadow-xl lg:w-80 max-w-md mx-auto lg:max-w-none">
-        <div className="p-3">
-          <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2">
+      <Card className="bg-black bg-opacity-80 border-yellow-600 border-2 shadow-2xl backdrop-blur-sm lg:w-80 max-w-md mx-auto lg:max-w-none">
+        <div className="p-3" style={{
+          backgroundImage: `linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%)`,
+        }}>
+          <h2 className="text-yellow-400 text-lg lg:text-xl font-bold mb-3 text-center border-b border-yellow-600 pb-2 drop-shadow-lg">
             ITEMS
           </h2>
           <div className="grid grid-cols-6 lg:grid-cols-4 gap-2 max-h-[300px] lg:max-h-[500px] overflow-y-auto">
