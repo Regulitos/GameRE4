@@ -239,13 +239,16 @@ const InventoryPanel = () => {
       const preparedLevel = prepareGameLevel(nextLevel);
       setCurrentLevelData(preparedLevel);
       setShowCompletionModal(false);
+      setCompletionData(null);
       // initializeLevel se ejecutará automáticamente por el useEffect
     }
   };
 
   const restartLevel = () => {
     setShowCompletionModal(false);
+    setCompletionData(null);
     initializeLevel();
+    startGameSession(); // Iniciar nueva sesión
   };
 
   const handleDragMove = useCallback((e) => {
