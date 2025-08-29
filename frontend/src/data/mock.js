@@ -49,28 +49,21 @@ export const gamelevels = [
       { row: 4, col: 4, type: 'block', name: 'Muro' }
     ],
     availableItems: [
-      // 33 espacios necesarios + extras
-      { id: 201, name: 'Pistol', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 202, name: 'Rifle', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
-      { id: 203, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 204, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 205, name: 'Ammo', shape: [[0,0]], rotatable: false }, // 1
-      { id: 206, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
-      { id: 207, name: 'Card', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 208, name: 'Scope', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 209, name: 'Battery', shape: [[0,0], [1,0]], rotatable: true }, // 2
-      { id: 210, name: 'Tool', shape: [[0,0], [0,1]], rotatable: true }, // 2
-      { id: 211, name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
-      { id: 212, name: 'Box', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
-      { id: 213, name: 'Part', shape: [[0,0], [0,1]], rotatable: true }, // 2
-      { id: 214, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
-      { id: 215, name: 'Gem', shape: [[0,0]], rotatable: false }, // 1
-      { id: 216, name: 'Med', shape: [[0,0]], rotatable: false }, // 1
-      { id: 217, name: 'Herb', shape: [[0,0]], rotatable: false }, // 1
-      { id: 218, name: 'Bit1', shape: [[0,0]], rotatable: false }, // 1
-      { id: 219, name: 'Bit2', shape: [[0,0]], rotatable: false }, // 1
-      { id: 220, name: 'Tiny', shape: [[0,0]], rotatable: false } // 1
-      // Total: 37 espacios (4 extras)
+      // Más desafiante - solo 2 items de 1x1
+      { id: 201, name: 'L-Gun', shape: [[0,0], [0,1], [1,0]], rotatable: true }, // 3
+      { id: 202, name: 'L-Case', shape: [[0,0], [0,1], [0,2], [1,0]], rotatable: true }, // 4
+      { id: 203, name: 'T-Tool', shape: [[0,0], [1,0], [2,0], [1,1]], rotatable: true }, // 4
+      { id: 204, name: 'Rifle', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 205, name: 'Case', shape: [[0,0], [1,0], [0,1], [1,1]], rotatable: false }, // 4
+      { id: 206, name: 'Pills', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 207, name: 'Aid Kit', shape: [[0,0], [1,0]], rotatable: true }, // 2
+      { id: 208, name: 'Battery', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 209, name: 'Scope', shape: [[0,0], [0,1]], rotatable: true }, // 2
+      { id: 210, name: 'Wire', shape: [[0,0], [1,0], [2,0]], rotatable: true }, // 3
+      { id: 211, name: 'Z-Part', shape: [[0,0], [1,0], [1,1], [2,1]], rotatable: true }, // 4
+      { id: 212, name: 'Key', shape: [[0,0]], rotatable: false }, // 1
+      { id: 213, name: 'Gem', shape: [[0,0]], rotatable: false } // 1
+      // Total: 36 espacios (3 extras) - Solo 2 items de 1x1
     ],
     stars: 1
   },
