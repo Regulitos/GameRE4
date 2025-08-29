@@ -510,17 +510,32 @@ const InventoryPanel = () => {
       {/* Modal de completar nivel */}
       {showCompletionModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <Card className="bg-gray-800 border-yellow-600 border-2 p-6 max-w-sm mx-4">
+          <Card className="bg-black bg-opacity-90 border-yellow-600 border-2 p-6 max-w-sm mx-4 backdrop-blur-sm">
             <div className="text-center">
-              <h3 className="text-yellow-400 text-xl font-bold mb-2">
-                ¡Nivel Completado!
+              <h3 className="text-yellow-400 text-xl font-bold mb-2 drop-shadow-lg">
+                ¡Misión Completada!
               </h3>
               <p className="text-yellow-300 mb-1">
-                {currentLevelData.title}
+                {currentLevelData?.title}
               </p>
-              <div className="flex justify-center mb-4">
-                <span className="text-yellow-400 text-2xl">⭐</span>
-              </div>
+              
+              {completionData && (
+                <div className="mb-4 space-y-2">
+                  <div className="flex justify-center mb-2">
+                    {Array.from({ length: completionData.stars_earned }, (_, i) => (
+                      <span key={i} className="text-yellow-400 text-2xl">⭐</span>
+                    ))}
+                  </div>
+                  <div className="bg-gray-800 bg-opacity-80 rounded p-3 text-sm">
+                    <div className="text-gray-300">
+                      <p>⏱️ Tiempo: {Math.floor(completionData.completion_time / 60)}:{(completionData.completion_time % 60).toString().padStart(2, '0')}</p>
+                      <p>🎯 Movimientos: {completionData.moves_count}</p>
+                      <p>⭐ Estrellas: +{completionData.stars_earned}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <div className="flex gap-2 justify-center">
                 <Button
                   onClick={restartLevel}
@@ -529,7 +544,7 @@ const InventoryPanel = () => {
                 >
                   Reintentar
                 </Button>
-                {currentLevelData.id < gamelevels.length && (
+                {currentLevelData?.id < gamelevels.length && (
                   <Button
                     onClick={goToNextLevel}
                     className="bg-yellow-600 text-black hover:bg-yellow-500"
