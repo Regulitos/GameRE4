@@ -8,15 +8,15 @@ import { rotateItem, canPlaceShape, getShapeCells, getShapeBounds } from '../uti
 import gameAPI from '../services/gameAPI';
 
 const InventoryPanel = () => {
-  const [currentLevelData, setCurrentLevelData] = useState(() => {
-    return prepareGameLevel(getCurrentLevel());
-  });
-  const [playerProgress, setPlayerProgress] = useState(getPlayerProgress());
+  const [currentLevelData, setCurrentLevelData] = useState(null);
+  const [playerProgress, setPlayerProgress] = useState({ currentLevel: 1, stars: 0, completedLevels: [] });
   const [gridItems, setGridItems] = useState({});
   const [availableItems, setAvailableItems] = useState([]);
   const [draggedItem, setDraggedItem] = useState(null);
   const [dragPreview, setDragPreview] = useState({ x: 0, y: 0, visible: false });
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [completionData, setCompletionData] = useState(null);
   const gridRef = useRef(null);
 
   const GRID_SIZE = 40;
