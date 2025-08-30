@@ -20,8 +20,8 @@ const InventoryPanel = () => {
   const gridRef = useRef(null);
 
   const GRID_SIZE = 40;
-  const GRID_COLS = currentLevelData.gridCols;
-  const GRID_ROWS = currentLevelData.gridRows;
+  const GRID_COLS = currentLevelData?.gridCols || 6;
+  const GRID_ROWS = currentLevelData?.gridRows || 6;
 
   // Inicializar progreso y nivel al cargar componente
   useEffect(() => {
