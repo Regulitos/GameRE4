@@ -374,6 +374,37 @@ const InventoryPanel = () => {
     return cells;
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Card className="bg-black bg-opacity-80 border-yellow-600 border-2 p-8 backdrop-blur-sm">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
+            <p className="text-yellow-400 font-bold">Cargando misión...</p>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!currentLevelData) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Card className="bg-black bg-opacity-80 border-red-600 border-2 p-8 backdrop-blur-sm">
+          <div className="text-center">
+            <p className="text-red-400 font-bold">Error: No se pudo cargar el nivel</p>
+            <Button 
+              onClick={initializeGame} 
+              className="mt-4 bg-yellow-600 text-black hover:bg-yellow-500"
+            >
+              Reintentar
+            </Button>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div 
       className="flex flex-col lg:flex-row gap-4 p-4 bg-gray-900 min-h-screen"
